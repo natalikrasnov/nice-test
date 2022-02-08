@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="clsCommon">
+    <search :onSearch="onSearch.bind()"/> 
+    <ListOfColors :searchValue="searchValue"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import search from './components/search'
+import ListOfColors from './components/listOfColors'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    search,
+    ListOfColors
+  },
+  data () {
+  return {
+    searchValue: ""
   }
+},
+methods:{
+  onSearch:(color)=>{
+    this.searchValue = color
+  }
+}
+   
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.clsCommon {
+	font-size: 20px; 
+	font-family: arial;
 }
+
+search{
+      position: -webkit-sticky;
+      position: sticky;
+      top: 20px;
+
+}
+
 </style>
